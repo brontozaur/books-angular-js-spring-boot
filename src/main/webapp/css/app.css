@@ -1,0 +1,22 @@
+.app-header {
+    font-family: Arial, sans-serif;
+    color: #596F8F;
+    font-size: 18px;
+    padding: 5px;
+    text-shadow: 0 1px 0 #fff;
+}
+
+.book-info-label {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    padding: 5px;
+    text-shadow: 0 1px 0 #fff;
+}
+
+.book-info-label-value {
+    font-family: Arial, sans-serif;
+    color: gray;
+    font-size: 16px;
+    font-weight: 100;
+    text-shadow: 0 1px 0 #fff;
+}
