@@ -40,6 +40,13 @@
         <commons.codec.version>1.9</commons.codec.version>
         <jsonpath.version>2.1.0</jsonpath.version>
         <json-smart.version>2.2</json-smart.version>
+
+        <angular-ui-bootstrap.version>1.1.1</angular-ui-bootstrap.version>
+        <angular-ui-router.version>0.2.17</angular-ui-router.version>
+        <angularjs.version>1.5.0</angularjs.version>
+        <bootstrap.version>3.3.6</bootstrap.version>
+        <jquery.version>2.2.0</jquery.version>
+        <ui-grid.version>3.1.1</ui-grid.version>
     </properties>
 
     <dependencies>
@@ -132,6 +139,40 @@
             <artifactId>json-smart</artifactId>
             <version>${json-smart.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- WebJars -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>angular-ui-bootstrap</artifactId>
+            <version>${angular-ui-bootstrap.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>angular-ui-router</artifactId>
+            <version>${angular-ui-router.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>angularjs</artifactId>
+            <version>${angularjs.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>${bootstrap.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>${jquery.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>angular-ui-grid</artifactId>
+            <version>${ui-grid.version}</version>
         </dependency>
 
     </dependencies>

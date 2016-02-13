@@ -1,4 +1,7 @@
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      ng-app="BooksManager"
+      ng-controller="MainCtrl">
 <head>
     <title>Books manager</title>
 
@@ -7,14 +10,23 @@
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="css/app.css">
 
-
+    <script src="webjars/jquery/2.2.0/jquery.js"></script>
+    <script src="webjars/angularjs/1.5.0/angular.js" ></script>
 </head>
 <body>
 
-<h1>Welcome to Angular Project</h1>
+<h1>{{welcome}}</h1>
+
+<script src="webjars/bootstrap/3.3.6/js/bootstrap.js"></script>
+<script src="webjars/angular-ui-bootstrap/1.1.1/ui-bootstrap-tpls.js"></script>
+<script src="webjars/angular-ui-grid/3.1.1/ui-grid.js"></script>
+<script src="webjars/angular-ui-router/0.2.17/angular-ui-router.js"></script>
 
 <!--The main app-->
 <script type="text/javascript" src="/app/BooksManager.js"></script>
+
+<!--Controllers-->
+<script type="text/javascript" src="/app/ctrl/MainCtrl.js"></script>
 
 </body>
 </html>

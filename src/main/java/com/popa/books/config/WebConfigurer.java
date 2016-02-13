@@ -16,7 +16,10 @@ public class WebConfigurer extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler(props.getUploadsRelativePath()+ "**").addResourceLocations("file:" + props.getFullUploadDir());
+        registry.addResourceHandler(props.getUploadsRelativePath() + "**").addResourceLocations("file:" + props.getFullUploadDir());
+        if (!registry.hasMappingForPattern("/webjars/**")) {
+            registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+        }
     }
 
 }
