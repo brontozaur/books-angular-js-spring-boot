@@ -1,0 +1,15 @@
+language: java
+
+env:
+  - DB=mysql
+
+cache:
+  directories:
+    - $HOME/.m2
+
+notifications:
+  email:
+    recipients:
+      - hypercube21@yahoo.com
+    on_success: change #options: always never change
+    on_failure: always

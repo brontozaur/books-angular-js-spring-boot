@@ -1,0 +1,21 @@
+# Default .gitignore file
+
+# Mac OS X
+.DS_Store
+
+# Vagrant
+.vagrant/
+
+# IntelliJ
+.idea/
+*.iml
+*.iws
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Maven
+log/
+target/
