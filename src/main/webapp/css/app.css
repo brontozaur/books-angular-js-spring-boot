@@ -4,6 +4,7 @@
     font-size: 18px;
     padding: 5px;
     text-shadow: 0 1px 0 #fff;
+    background-color: #D7E2F5;
 }
 
 .book-info-label {
@@ -19,4 +20,14 @@
     font-size: 16px;
     font-weight: 100;
     text-shadow: 0 1px 0 #fff;
+}
+
+.height-full {
+    height: 100%;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0
 }

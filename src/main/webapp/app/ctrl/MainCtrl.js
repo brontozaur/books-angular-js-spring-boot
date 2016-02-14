@@ -1,5 +1,20 @@
-BooksManager.controller('MainCtrl', ['$scope', function (scope) {
+BooksManager.controller('MainCtrl',
+    ['$scope',
+        function ($scope) {
 
-    scope.welcome = 'Welcome to AngularJS from main controller!!';
-
-}]);
+            $scope.tabNames = [{
+                title: 'Carti',
+                route: 'books'
+            }, {
+                title: 'Edituri',
+                route: 'edituri'
+            }, {
+                title: 'Autori',
+                route: 'autori'
+            }, {
+                title: 'Categorii',
+                route: 'categorii'
+            }];
+        }
+    ]
+);
