@@ -22,16 +22,25 @@
         </button>
 
     </div>
-    <div id="edituriGrid" ui-grid="edituriGrid" class="grid">
+    <div id="edituriGrid" ui-grid="gridOptions" class="grid"
+         ui-grid-resize-columns
+         ui-grid-pinning
+         ui-grid-selection
+         ui-grid-move-columns
+         ui-grid-exporter
+         ui-grid-grouping
+         ui-grid-pagination
+         ui-grid-auto-resize>
     </div>
     <div class="pagination-grid">
         <uib-pagination
                 boundary-links="true"
+                boundary-link-numbers="true"
                 direction-links="true"
                 rotate="false"
                 total-items="totalElements"
                 ng-model="currentPage"
-                items-per-page="size"
+                items-per-page="pageSize"
                 max-size="10"
                 class="pagination-sm"
                 ng-change="pageChanged(currentPage)"

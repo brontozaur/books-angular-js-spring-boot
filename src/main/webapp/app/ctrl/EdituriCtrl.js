@@ -7,7 +7,7 @@ BooksManager.controller('EdituriCtrl',
             $scope.edituri = [];
             $scope.totalElements;
 
-            $scope.edituriGrid = {
+            $scope.gridOptions = {
                 data: $scope.edituri,
                 enableRowHeaderSelection: false,
                 enableRowSelection: true,
@@ -36,14 +36,20 @@ BooksManager.controller('EdituriCtrl',
                         displayName: 'Id',
                         width: 50,
                         cellTooltip: true,
-                        type: 'number'
+                        type: 'number',
+                        enableGrouping: true,
+                        groupingShowGroupingMenu: false,
+                        groupingShowAggregationMenu: true
                     },
                     {
                         name: 'numeEditura',
                         displayName: 'Nume editura',
                         width: 200,
                         cellTooltip: true,
-                        type: 'string'
+                        type: 'string',
+                        enableGrouping: true,
+                        groupingShowGroupingMenu: false,
+                        groupingShowAggregationMenu: true
                     }
                 ]
             };
@@ -60,7 +66,7 @@ BooksManager.controller('EdituriCtrl',
                             $scope.currentPage = pageNumber;
                             $scope.edituri = data.content;
                             $scope.totalElements = data.totalElements;
-                            $scope.edituriGrid.data = $scope.edituri;
+                            $scope.gridOptions.data = $scope.edituri;
 
                             console.log("edituri: " + $scope.edituri.length);
 
