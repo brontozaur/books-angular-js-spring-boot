@@ -1,3 +1,44 @@
-<div>
-    <h1>Edituri</h1>
+<div class="tile" ng-controller="EdituriCtrl" ng-init="getEdituri()">
+    <div class="btn-toolbar padding-top-5 padding-left-5 padding-bottom-5" role="toolbar">
+
+        <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-plus color-green"></span>
+            <span class="button-text">Adaugare</span>
+        </button>
+
+        <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-edit color-orange"></span>
+            <span class="button-text">Modificare</span>
+        </button>
+
+        <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-trash color-red"></span>
+            <span class="button-text">Delete</span>
+        </button>
+
+        <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-refresh color-blue"></span>
+            <span class="button-text">Refresh</span>
+        </button>
+
+    </div>
+    <div id="edituriGrid" ui-grid="edituriGrid" class="grid">
+    </div>
+    <div class="pagination-grid">
+        <uib-pagination
+                boundary-links="true"
+                direction-links="true"
+                rotate="false"
+                total-items="totalElements"
+                ng-model="currentPage"
+                items-per-page="size"
+                max-size="10"
+                class="pagination-sm"
+                ng-change="pageChanged(currentPage)"
+                first-text="First"
+                previous-text="Previous"
+                next-text="Next"
+                last-text="Last">
+        </uib-pagination>
+    </div>
 </div>

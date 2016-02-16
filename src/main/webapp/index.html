@@ -10,10 +10,16 @@
 
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="css/app.css">
-    <link rel="stylesheet" href="webjars/bootstrap/3.3.6/css/bootstrap.css" />
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.6/css/bootstrap.css"/>
+    <link rel="stylesheet" href="webjars/angular-ui-grid/3.1.1/ui-grid.css"/>
 
     <script src="webjars/jquery/2.2.0/jquery.js"></script>
     <script src="webjars/angularjs/1.5.0/angular.js"></script>
+    <script src="webjars/angular-ui-grid/3.1.1/ui-grid.js"></script>
+
+    <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
+    <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
 </head>
 <body>
 
@@ -21,7 +27,6 @@
     Books Manager
 </div>
 
-<div ng-repeat="tab in tabs">{{tab.title}}</div>
 <uib-tabset type="tabs">
     <uib-tab ng-repeat="tab in tabNames"
              heading="{{tab.title}}"
@@ -29,7 +34,6 @@
              disable="tab.disabled">
         <div ui-view="{{tab.route}}"></div>
     </uib-tab>
-
 </uib-tabset>
 
 <script src="webjars/bootstrap/3.3.6/js/bootstrap.js"></script>
@@ -42,6 +46,10 @@
 
 <!--Controllers-->
 <script type="text/javascript" src="/app/ctrl/MainCtrl.js"></script>
+<script type="text/javascript" src="/app/ctrl/EdituriCtrl.js"></script>
+
+<!--Services-->
+<script type="text/javascript" src="/app/service/EdituriService.js"></script>
 
 </body>
 </html>
