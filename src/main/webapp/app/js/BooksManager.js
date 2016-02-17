@@ -23,16 +23,16 @@ BooksManager.config(['$stateProvider', '$urlRouterProvider', '$locationProvider'
                     url: "",
                     views: {
                         'books': {
-                            templateUrl: "./partials/tabs/books_tab.html"
+                            templateUrl: "/app/partials/tabs/books_tab.html"
                         },
                         'autori': {
-                            templateUrl: "./partials/tabs/autori_tab.html"
+                            templateUrl: "/app/partials/tabs/autori_tab.html"
                         },
                         'edituri': {
-                            templateUrl: "./partials/tabs/edituri_tab.html"
+                            templateUrl: "/app/partials/tabs/edituri_tab.html"
                         },
                         'categorii': {
-                            templateUrl: "./partials/tabs/categorii_tab.html"
+                            templateUrl: "/app/partials/tabs/categorii_tab.html"
                         }
                     }
                 }
