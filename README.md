@@ -50,15 +50,15 @@ The main goal of this project is to port the 'old' ExtJS Books Manager app to us
            
 You can now install both [npm webjars](http://www.webjars.org/npm) and [bower webjars](http://www.webjars.org/bower).          
         
- * The pure js way: using `Node.js`, `npm` and `bower`.
+ * The pure javascript way: using `Node.js`, `npm` and `bower`.
  
- <b>Step1</b>. Install [Node.js](https://nodejs.org/en/download/). This contains `npm` (Node Package Manager). `npm` is used to 
+<b>Step1</b>. Install [Node.js](https://nodejs.org/en/download/). This contains `npm` (Node Package Manager). `npm` is used to 
         manage your application js dependencies, other than Angular code.  
- <b>Step2</b>. Install Node.js dependencies:
+<b>Step2</b>. Install Node.js dependencies:
  
         npm install
  
- <b>Step3</b>. Install [bower](http://bower.io), the client side angular code manager.
+<b>Step3</b>. Install [bower](http://bower.io), the client side angular code manager.
  
         sudo npm install -g bower
         
