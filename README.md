@@ -1,6 +1,7 @@
 # Books Manager (AngularJS edition)
 
-The main goal of this project is to port the 'old' ExtJS Books Manager app to using AngularJS.
+The main goal of this project is to port the 'old' ExtJS [Books Manager](https://github.com/hypercube21/books-extjs-spring-boot.git) 
+app to using AngularJ
 
 #Two ways to import angularJS and js deps
 <b>A. The maven way, using [webjars](http://www.webjars.org/) </b>  
