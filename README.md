@@ -94,3 +94,29 @@ Other tools:
       npm start
       npm run update-webdriver => downloads the latest standalone webdriver (Selenium)
       npm run protractor => runs the end to end tests
+
+# How to install angular code via bower
+
+* Go to bower [site](http://bower.io/search/) and search for the dependency. (E.g. bootstrap)
+* Add the dependency in the bower.json file:  
+
+        "bootstrap": "3.3.6"  
+        
+It's a good question how to detect the file version at this step. This is yet unclear to me.  
+
+* Execute:
+
+        npm install
+        
+If the dependency was just updated, you could say:   
+ 
+        bower update
+or
+        
+        npm update
+        
+* Another way is to go to project page and check out installation instructions. E.g. for bootstrap:
+
+        bower install bootstrap
+
+* Add the new dependency js file to your index.html, karma.conf.js, etc, as needed.        
