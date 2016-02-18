@@ -106,17 +106,15 @@ It's a good question how to detect the file version at this step. This is yet un
 
 * Execute:
 
-        npm install
-        
-If the dependency was just updated, you could say:   
- 
         bower update
-or
-        
-        npm update
-        
+       
 * Another way is to go to project page and check out installation instructions. E.g. for bootstrap:
 
         bower install bootstrap
 
-* Add the new dependency js file to your index.html, karma.conf.js, etc, as needed.        
+* Add the new dependency js file to your index.html, karma.conf.js, etc, as needed.E.g.:
+
+        <link rel="stylesheet" href="/app/bower_components/bootstrap/dist/css/bootstrap.css">
+        
+        'app/bower_components/bootstrap/dist/js/bootstrap.js'
+            
