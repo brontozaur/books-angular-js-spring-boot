@@ -1,4 +1,4 @@
-var BooksManager = angular.module('BooksManager', [
+angular.module('booksManager', [
     'ui.router',
     'ui.bootstrap',
     'ui.grid',
@@ -13,9 +13,8 @@ var BooksManager = angular.module('BooksManager', [
     'ui.grid.grouping',
     'ui.grid.pagination',
     'ui.grid.autoResize'
-]);
-
-BooksManager.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+])
+    .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
         $stateProvider
@@ -41,4 +40,12 @@ BooksManager.config(['$stateProvider', '$urlRouterProvider', '$locationProvider'
         $urlRouterProvider.otherwise('/');
 
     }
-]);
+])
+
+/*
+    This demonstrates how $rootScope can be used to pass global app variables (configs) in js.
+    For sharing data between controllers, use a service. However, dont create a service only for sharing values!
+ */
+    .run(function ($rootScope) {
+    $rootScope.initTime = new Date();
+});

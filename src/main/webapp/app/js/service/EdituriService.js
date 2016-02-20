@@ -1,4 +1,4 @@
-BooksManager.factory('EdituriService', ['$http', '$q', function ($http, $q) {
+angular.module('booksManager').factory('EdituriService', ['$http', '$q', function ($http, $q) {
 
     return {
         getEdituri: function (pageNumber, pageSize) {

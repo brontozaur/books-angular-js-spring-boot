@@ -1,4 +1,4 @@
-BooksManager.controller('MainCtrl',
+angular.module('booksManager').controller('MainCtrl',
     ['$scope',
         function ($scope) {
 
