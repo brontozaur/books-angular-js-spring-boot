@@ -1,19 +1,19 @@
-angular.module('booksManager').controller('MainCtrl',
+angular.module('booksManager').controller('mainCtrl',
     ['$scope',
         function ($scope) {
 
             $scope.tabNames = [{
                 title: 'Carti',
-                route: 'books'
+                viewName: 'booksTabContent'
             }, {
                 title: 'Edituri',
-                route: 'edituri'
+                viewName: 'edituriTabContent'
             }, {
                 title: 'Autori',
-                route: 'autori'
+                viewName: 'autoriTabContent'
             }, {
                 title: 'Categorii',
-                route: 'categorii'
+                viewName: 'categoriiTabContent'
             }];
         }
     ]

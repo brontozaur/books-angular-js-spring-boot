@@ -1,4 +1,4 @@
-angular.module('booksManager').controller('EdituriCtrl',
+angular.module('booksManager').controller('edituriCtrl',
     ['$scope', 'EdituriService',
         function ($scope, EdituriService) {
 
