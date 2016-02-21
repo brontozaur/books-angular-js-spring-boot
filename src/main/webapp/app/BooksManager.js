@@ -40,6 +40,27 @@ angular.module('booksManager', [
             $urlRouterProvider.otherwise('/');
         }])
 
+    .controller('mainCtrl',
+        ['$scope',
+            function ($scope) {
+
+                $scope.tabNames = [{
+                    title: 'Carti',
+                    viewName: 'booksTabContent'
+                }, {
+                    title: 'Edituri',
+                    viewName: 'edituriTabContent'
+                }, {
+                    title: 'Autori',
+                    viewName: 'autoriTabContent'
+                }, {
+                    title: 'Categorii',
+                    viewName: 'categoriiTabContent'
+                }];
+            }
+        ]
+    )
+
     /*
      This demonstrates how $rootScope can be used to pass global app variables (configs) in js.
      For sharing data between controllers, use a service. However, dont create a service only for sharing values!
