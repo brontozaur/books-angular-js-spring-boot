@@ -92,6 +92,9 @@
 
 .pagination-grid{
     width: 100%;
+    padding-top:0px;
+    border:  1px solid lightgray;
+    border-top: 0;
     text-align: center;
 }
 
