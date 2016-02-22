@@ -3,7 +3,7 @@
 describe('service', function () {
 
     // load modules
-    beforeEach(module('BooksManager'));
+    beforeEach(module('booksManager'));
 
     // Test service availability
     it('check the existence of EdituriService', inject(function(EdituriService) {

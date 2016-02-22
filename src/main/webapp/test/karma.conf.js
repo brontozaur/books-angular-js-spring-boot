@@ -10,9 +10,10 @@ module.exports = function(config){
       'app/bower_components/jquery/dist/jquery.js',
       'app/bower_components/bootstrap/dist/js/bootstrap.js',
       'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-       'app/bower_components/angular-ui-grid/ui-grid.js',
+      'app/bower_components/angular-ui-grid/ui-grid.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
-      'app/js/**/*.js',
+      'app/*.js',
+      'app/components/**/*.js',
       'test/unit/**/*.js'
     ],
 
