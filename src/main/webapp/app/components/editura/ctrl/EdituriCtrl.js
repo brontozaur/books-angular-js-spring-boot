@@ -2,15 +2,8 @@ angular.module('booksManager').controller('edituriCtrl',
     ['$scope', 'EdituriService', '$uibModal',
         function ($scope, EdituriService, $uibModal) {
 
-            $scope.buttonMod = {
-                disabled: true
-            };
-
-            $scope.buttonDel = {
-                disabled: true
-            };
-
             $scope.oldEditura;
+            $scope.hasSelection = false;
 
             $scope.pageSize = 10;
             $scope.currentPage = 1;
@@ -86,6 +79,8 @@ angular.module('booksManager').controller('edituriCtrl',
                             $scope.gridOptions.data = $scope.edituri;
 
                             console.log("edituri: " + $scope.edituri.length);
+
+                            $scope.hasSelection = false;
 
                         },
                         function (errResponse) {
@@ -181,9 +176,7 @@ angular.module('booksManager').controller('edituriCtrl',
             };
 
             $scope.enableButtonsEditura = function () {
-                var enableButtons = $scope.gridApi.selection.getSelectedRows().length == 1;
-                $scope.buttonMod.disabled = !enableButtons;
-                $scope.buttonDel.disabled = !enableButtons;
+                $scope.hasSelection = $scope.gridApi.selection.getSelectedRows().length == 1;
             }
         }
     ]

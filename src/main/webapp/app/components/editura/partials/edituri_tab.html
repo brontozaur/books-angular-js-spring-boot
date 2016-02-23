@@ -6,17 +6,17 @@
             <span class="button-text">Adaugare</span>
         </button>
 
-        <button type="button" class="btn btn-default" ng-click="modEditura()" data-ng-model="buttonMod" ng-disabled="buttonMod.disabled">
+        <button type="button" class="btn btn-default" ng-click="modEditura()" ng-disabled="!hasSelection">
             <span class="glyphicon glyphicon-edit color-orange"></span>
             <span class="button-text">Modificare</span>
         </button>
 
-        <button type="button" class="btn btn-default" ng-click="deleteEditura()" data-ng-model="buttonDel" ng-disabled="buttonDel.disabled">
+        <button type="button" class="btn btn-default" ng-click="deleteEditura()" ng-disabled="!hasSelection">
             <span class="glyphicon glyphicon-trash color-red"></span>
             <span class="button-text">Delete</span>
         </button>
 
-        <button type="button" class="btn btn-default" ng-click="getEdituri(1)">
+        <button type="button" class="btn btn-default" ng-click="getEdituri(1)" ng-model="hasSelection">
             <span class="glyphicon glyphicon-refresh color-blue"></span>
             <span class="button-text">Refresh</span>
         </button>
