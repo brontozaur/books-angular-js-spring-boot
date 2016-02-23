@@ -10,6 +10,8 @@ angular.module('booksManager').controller('edituriCtrl',
                 disabled: true
             };
 
+            $scope.oldEditura;
+
             $scope.pageSize = 10;
             $scope.currentPage = 1;
             $scope.edituri = [];
@@ -118,13 +120,14 @@ angular.module('booksManager').controller('edituriCtrl',
                     return;
                 }
                 var editura = $scope.gridApi.selection.getSelectedRows()[0];
+                $scope.oldEditura = editura;
                 var modalInstanceWindow = $uibModal.open({
                     animation: true,
                     templateUrl: '/app/components/editura/partials/editura_window.html',
                     controller: 'modalCtrl',
                     resolve: {
                         editedObject: function () {
-                            return editura;
+                            return angular.copy(editura);
                         }
                     }
                 });
@@ -138,7 +141,17 @@ angular.module('booksManager').controller('edituriCtrl',
                 EdituriService.saveEditura(editura)
                     .then(
                         function (data) {
-                            $scope.edituri.push(data);
+                            if (editura.idEditura > 0) { //update
+                                var index = $scope.edituri.indexOf($scope.oldEditura);
+                                if (index > 0) {
+                                    angular.extend($scope.edituri[index], editura);
+                                } else {
+                                    console.log('error detecting index of ' + $scope.oldEditura.idEditura);
+                                    $scope.getEdituri($scope.currentPage);
+                                }
+                            } else {
+                                $scope.edituri.push(data);
+                            }
                         },
                         function (errResponse) {
                             console.error(' EdituriCtrl.saveEditura() - error');
