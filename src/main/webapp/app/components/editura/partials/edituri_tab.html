@@ -1,7 +1,7 @@
 <div class="tile" ng-controller="edituriCtrl" ng-init="getEdituri()">
     <div class="btn-toolbar padding-top-5 padding-left-5 padding-bottom-5" role="toolbar">
 
-        <button type="button" class="btn btn-default">
+        <button type="button" class="btn btn-default" ng-click="addEditura()">
             <span class="glyphicon glyphicon-plus color-green"></span>
             <span class="button-text">Adaugare</span>
         </button>
@@ -32,7 +32,7 @@
          ui-grid-pagination
          ui-grid-auto-resize>
     </div>
-    <div class="pagination-grid">
+    <div class="pagination-grid margin-top-5">
         <uib-pagination
                 boundary-links="true"
                 boundary-link-numbers="true"

@@ -52,6 +52,10 @@
     border-bottom: 1px solid lightgray;
 }
 
+.width-40-percent {
+    width: 40%;
+}
+
 .tile {
     border: 1px solid lightgray;
     /*margin-left: 2px;*/
@@ -90,16 +94,28 @@
     width: 100%;
 }
 
-.pagination-grid{
+.pagination-grid {
     width: 100%;
-    padding-top:0px;
-    border:  1px solid lightgray;
+    padding-top: 0;
+    border: 1px solid lightgray;
     border-top: 0;
     text-align: center;
+}
+
+.margin-top-5 {
+    margin-top:5px;
+}
+
+.same-line {
+    display: inline-block;
 }
 
 html,
 body {
     height: 100%;
     margin: 0
+}
+
+.row, .pagination {
+    margin: 0!important;
 }
