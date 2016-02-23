@@ -1,13 +1,36 @@
 angular.module('booksManager').controller('edituriCtrl',
-    ['$scope', 'EdituriService',
-        function ($scope, EdituriService) {
+    ['$scope', 'EdituriService', '$uibModal',
+        function ($scope, EdituriService, $uibModal) {
 
-            $scope.pageSize = 1;
+            $scope.pageSize = 10;
             $scope.currentPage = 1;
             $scope.edituri = [];
             $scope.totalElements;
+            $scope.columnDefs = [
+                {
+                    name: 'idEditura',
+                    displayName: 'Id',
+                    width: 50,
+                    cellTooltip: true,
+                    type: 'number',
+                    enableGrouping: true,
+                    groupingShowGroupingMenu: false,
+                    groupingShowAggregationMenu: true
+                },
+                {
+                    name: 'numeEditura',
+                    displayName: 'Nume editura',
+                    width: 200,
+                    cellTooltip: true,
+                    type: 'string',
+                    enableGrouping: true,
+                    groupingShowGroupingMenu: false,
+                    groupingShowAggregationMenu: true
+                }
+            ];
 
             $scope.gridOptions = {
+                columnDefs: $scope.columnDefs,
                 data: $scope.edituri,
                 enableRowHeaderSelection: false,
                 enableRowSelection: true,
@@ -28,30 +51,7 @@ angular.module('booksManager').controller('edituriCtrl',
                 enableCellEdit: false,
                 onRegisterApi: function (gridApi) {
                     $scope.gridApi = gridApi;
-                },
-
-                columnDefs: [
-                    {
-                        name: 'idEditura',
-                        displayName: 'Id',
-                        width: 50,
-                        cellTooltip: true,
-                        type: 'number',
-                        enableGrouping: true,
-                        groupingShowGroupingMenu: false,
-                        groupingShowAggregationMenu: true
-                    },
-                    {
-                        name: 'numeEditura',
-                        displayName: 'Nume editura',
-                        width: 200,
-                        cellTooltip: true,
-                        type: 'string',
-                        enableGrouping: true,
-                        groupingShowGroupingMenu: false,
-                        groupingShowAggregationMenu: true
-                    }
-                ]
+                }
             };
 
             $scope.pageChanged = function (newPage) {
@@ -73,6 +73,39 @@ angular.module('booksManager').controller('edituriCtrl',
                         },
                         function (errResponse) {
                             console.error(' EdituriCtrl.getEdituri() - error');
+                        }
+                    );
+            };
+
+            $scope.addEditura = function() {
+
+                var modalInstanceWindow = $uibModal.open({
+                    animation: true,
+                    templateUrl: '/app/components/editura/partials/editura_window.html',
+                    controller: 'modalCtrl',
+                    resolve: {
+                        editedObject: function () {
+                            return {
+                                idEditura: 0,
+                                numeEditura: ''
+                            };
+                        }
+                    }
+                });
+
+                modalInstanceWindow.result.then(function (result) {
+                    $scope.saveEditura(result);
+                });
+            };
+
+            $scope.saveEditura = function (editura) {
+                EdituriService.saveEditura(editura)
+                    .then(
+                        function (data) {
+                            $scope.edituri.push(data);
+                        },
+                        function (errResponse) {
+                            console.error(' EdituriCtrl.saveEditura() - error');
                         }
                     );
             };
