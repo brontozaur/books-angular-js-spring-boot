@@ -2,6 +2,14 @@ angular.module('booksManager').controller('edituriCtrl',
     ['$scope', 'EdituriService', '$uibModal',
         function ($scope, EdituriService, $uibModal) {
 
+            $scope.buttonMod = {
+                disabled: true
+            };
+
+            $scope.buttonDel = {
+                disabled: true
+            };
+
             $scope.pageSize = 10;
             $scope.currentPage = 1;
             $scope.edituri = [];
@@ -51,6 +59,13 @@ angular.module('booksManager').controller('edituriCtrl',
                 enableCellEdit: false,
                 onRegisterApi: function (gridApi) {
                     $scope.gridApi = gridApi;
+                    $scope.gridApi.selection.on.rowSelectionChanged($scope, $scope.enableButtonsEditura)
+                },
+                rowIdentity: function (row) {
+                    return row.id;
+                },
+                getRowIdentity: function (row) {
+                    return row.id;
                 }
             };
 
@@ -77,7 +92,7 @@ angular.module('booksManager').controller('edituriCtrl',
                     );
             };
 
-            $scope.addEditura = function() {
+            $scope.addEditura = function () {
 
                 var modalInstanceWindow = $uibModal.open({
                     animation: true,
@@ -98,6 +113,27 @@ angular.module('booksManager').controller('edituriCtrl',
                 });
             };
 
+            $scope.modEditura = function () {
+                if ($scope.gridApi.selection.getSelectedRows().length == 0) {
+                    return;
+                }
+                var editura = $scope.gridApi.selection.getSelectedRows()[0];
+                var modalInstanceWindow = $uibModal.open({
+                    animation: true,
+                    templateUrl: '/app/components/editura/partials/editura_window.html',
+                    controller: 'modalCtrl',
+                    resolve: {
+                        editedObject: function () {
+                            return editura;
+                        }
+                    }
+                });
+
+                modalInstanceWindow.result.then(function (result) {
+                    $scope.saveEditura(result);
+                });
+            };
+
             $scope.saveEditura = function (editura) {
                 EdituriService.saveEditura(editura)
                     .then(
@@ -109,6 +145,33 @@ angular.module('booksManager').controller('edituriCtrl',
                         }
                     );
             };
+
+            $scope.deleteEditura = function () {
+                if ($scope.gridApi.selection.getSelectedRows().length == 0) {
+                    return;
+                }
+                var editura = $scope.gridApi.selection.getSelectedRows()[0];
+                EdituriService.deleteEditura(editura)
+                    .then(
+                        function (data) {
+                            var index = $scope.edituri.indexOf(editura);
+                            if (index > -1) {
+                                $scope.edituri.splice(index, 1);
+                            }
+                            alert('Editura [' + editura.numeEditura + '] a fost stearsa cu succes!');
+                        },
+                        function (errResponse) {
+                            console.error(' EdituriCtrl.saveEditura() - error');
+                            alert('Eroare la stergerea editurii [' + editura.numeEditura + ']!');
+                        }
+                    );
+            };
+
+            $scope.enableButtonsEditura = function () {
+                var enableButtons = $scope.gridApi.selection.getSelectedRows().length == 1;
+                $scope.buttonMod.disabled = !enableButtons;
+                $scope.buttonDel.disabled = !enableButtons;
+            }
         }
     ]
 );
