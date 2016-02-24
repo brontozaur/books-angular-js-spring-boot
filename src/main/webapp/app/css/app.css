@@ -107,11 +107,15 @@
 }
 
 .margin-top-5 {
-    margin-top:5px;
+    margin-top: 5px;
 }
 
 .same-line {
     display: inline-block;
+}
+
+.text-align-center {
+    text-align: center;
 }
 
 html,
@@ -121,5 +125,5 @@ body {
 }
 
 .row, .pagination {
-    margin: 0!important;
+    margin: 0 !important;
 }

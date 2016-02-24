@@ -21,14 +21,125 @@ angular.module('booksManager').controller('booksCtrl',
                     groupingShowAggregationMenu: true
                 },
                 {
-                    name: 'title',
-                    displayName: 'Titlu',
-                    width: 200,
+                    name: 'author.nume',
+                    displayName: 'Autor',
+                    width: '7%',
                     cellTooltip: true,
                     type: 'string',
                     enableGrouping: true,
                     groupingShowGroupingMenu: false,
                     groupingShowAggregationMenu: true
+                },
+                {
+                    name: 'title',
+                    displayName: 'Titlu',
+                    width: '7%',
+                    cellTooltip: true,
+                    type: 'string',
+                    enableGrouping: true,
+                    groupingShowGroupingMenu: false,
+                    groupingShowAggregationMenu: true
+                },
+                {
+                    name: 'anAparitie',
+                    displayName: 'An aparitie',
+                    width: '7%',
+                    cellTooltip: true,
+                    type: 'string',
+                    enableGrouping: true,
+                    groupingShowGroupingMenu: false,
+                    groupingShowAggregationMenu: true
+                },
+                {
+                    name: 'originalTitle',
+                    displayName: 'Titlu original',
+                    width: '7%',
+                    cellTooltip: true,
+                    type: 'string',
+                    enableGrouping: true,
+                    groupingShowGroupingMenu: false,
+                    groupingShowAggregationMenu: true
+                },
+                {
+                    name: 'isbn',
+                    displayName: 'ISBN',
+                    width: '7%',
+                    cellTooltip: true,
+                    type: 'string',
+                    enableGrouping: true,
+                    groupingShowGroupingMenu: false,
+                    groupingShowAggregationMenu: true
+                },
+                {
+                    name: 'serie',
+                    displayName: 'Serie',
+                    width: '7%',
+                    cellTooltip: true,
+                    type: 'string',
+                    enableGrouping: true,
+                    groupingShowGroupingMenu: false,
+                    groupingShowAggregationMenu: true
+                },
+                {
+                    name: 'nrPagini',
+                    displayName: 'Nr pagini',
+                    width: '7%',
+                    cellTooltip: true,
+                    type: 'number',
+                    enableGrouping: true,
+                    groupingShowGroupingMenu: false,
+                    groupingShowAggregationMenu: true
+                },
+                {
+                    name: 'editura.numeEditura',
+                    displayName: 'Editura',
+                    width: '7%',
+                    cellTooltip: true,
+                    type: 'string',
+                    enableGrouping: true,
+                    groupingShowGroupingMenu: false,
+                    groupingShowAggregationMenu: true
+                },
+                {
+                    name: 'categorie.numeCategorie',
+                    displayName: 'Gen',
+                    width: '7%',
+                    cellTooltip: true,
+                    type: 'string',
+                    enableGrouping: true,
+                    groupingShowGroupingMenu: false,
+                    groupingShowAggregationMenu: true
+                },
+                {
+                    name: 'width',
+                    displayName: 'Latime (mm)',
+                    width: '7%',
+                    cellTooltip: true,
+                    type: 'number',
+                    enableGrouping: true,
+                    groupingShowGroupingMenu: false,
+                    groupingShowAggregationMenu: true
+                },
+                {
+                    name: 'height',
+                    displayName: 'Inaltime (mm)',
+                    width: '7%',
+                    cellTooltip: true,
+                    type: 'number',
+                    enableGrouping: true,
+                    groupingShowGroupingMenu: false,
+                    groupingShowAggregationMenu: true
+                },
+                {
+                    name: 'citita',
+                    displayName: 'Citita',
+                    width: '7%',
+                    cellTooltip: true,
+                    type: 'boolean',
+                    enableGrouping: true,
+                    groupingShowGroupingMenu: false,
+                    groupingShowAggregationMenu: true,
+                    cellTemplate: "<div class='text-align-center'>{{grid.appScope.mapValue(row)}}</div>"
                 }
             ];
 
@@ -61,6 +172,11 @@ angular.module('booksManager').controller('booksCtrl',
                 },
                 getRowIdentity: function (row) {
                     return row.id;
+                },
+                appScopeProvider: {
+                    mapValue: function(row) {
+                        return row.entity.citita ? 'DA' : 'NU';
+                    }
                 }
             };
 
