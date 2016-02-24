@@ -1,0 +1,22 @@
+<div ng-controller="autoriCtrl">
+    <div class="modal-header">
+        <h3 class="modal-title" ng-if="editedObject.autorId == 0">Adaugare autor</h3>
+        <h3 class="modal-title" ng-if="editedObject.autorId > 0">Editare autor [id: {{editedObject.autorId}}]</h3>
+    </div>
+    <div class="modal-body">
+        <div>
+            <div class="same-line padding-right-5 width-100">Nume autor:</div>
+            <input type="text" class="border-solid width-40-percent same-line padding-left-5"
+                   data-ng-model="editedObject.nume"/>
+        </div>
+        <div class="padding-top-5">
+            <div class="same-line padding-right-5 width-100">Data nasterii:</div>
+            <input type="text" class="border-solid width-40-percent same-line padding-left-5"
+                   data-ng-model="editedObject.dataNasterii"/>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok(editedObject)">Salvare</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Renuntare</button>
+    </div>
+</div>

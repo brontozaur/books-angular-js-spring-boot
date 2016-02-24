@@ -1,9 +1,9 @@
-angular.module('booksManager').factory('EdituriService',
+angular.module('booksManager').factory('AutoriService',
     ['$http', '$q',
         function ($http, $q) {
             return {
-                getEdituri: function (pageNumber, pageSize) {
-                    return $http.get('/editura', {
+                getAutori: function (pageNumber, pageSize) {
+                    return $http.get('/autor', {
                             params: {
                                 page: pageNumber,
                                 limit: pageSize
@@ -14,44 +14,48 @@ angular.module('booksManager').factory('EdituriService',
                                 return response.data;
                             },
                             function (errResponse) {
-                                console.error('EdituraService.getEdituri - error');
+                                console.error('AutoriService.getAutori - error');
                                 return $q.reject(errResponse);
                             }
                         );
                 },
 
-                saveEditura: function (editura) {
+                saveAutor: function (autor) {
                     var httpMethod = 'POST';
-                    if (editura.idEditura > 0) {
+                    if (autor.autorId > 0) {
                         httpMethod = 'PUT';
                     }
                     return $http({
-                        url: '/editura',
+                        url: '/autor',
                         method: httpMethod,
-                        data: JSON.stringify(editura)
+                        data: JSON.stringify(autor)
                     })
                         .then(
                             function (response) {
                                 return response.data;
                             },
                             function (errResponse) {
-                                console.error('EdituraService.saveEditura - error');
+                                console.error('AutoriService.saveAutori - error');
                                 return $q.reject(errResponse);
                             });
                 },
 
-                deleteEditura: function (editura) {
+                deleteAutor: function (autor) {
                     var httpMethod = 'DELETE';
                     return $http({
-                        url: '/editura/' + editura.idEditura,
-                        method: httpMethod
+                        url: '/autor/' + autor.autorId,
+                        method: httpMethod,
+                        data: '',
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
                     })
                         .then(
                             function (response) {
-                                console.log('editura was deleted')
+                                console.log('autor was deleted')
                             },
                             function (errResponse) {
-                                console.error('EdituraService.deleteEditura - error');
+                                console.error('AutoriService.deleteAutor - error');
                                 return $q.reject(errResponse);
                             });
                 }

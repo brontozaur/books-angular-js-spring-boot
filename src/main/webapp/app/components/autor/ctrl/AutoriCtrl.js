@@ -1,17 +1,17 @@
-angular.module('booksManager').controller('edituriCtrl',
-    ['$scope', 'EdituriService', '$uibModal',
-        function ($scope, EdituriService, $uibModal) {
+angular.module('booksManager').controller('autoriCtrl',
+    ['$scope', 'AutoriService', '$uibModal',
+        function ($scope, AutoriService, $uibModal) {
 
-            $scope.oldEditura;
+            $scope.oldAutor;
             $scope.hasSelection = false;
 
             $scope.pageSize = 10;
             $scope.currentPage = 1;
-            $scope.edituri = [];
+            $scope.autori = [];
             $scope.totalElements;
             $scope.columnDefs = [
                 {
-                    name: 'idEditura',
+                    name: 'autorId',
                     displayName: 'Id',
                     width: 50,
                     cellTooltip: true,
@@ -21,11 +21,21 @@ angular.module('booksManager').controller('edituriCtrl',
                     groupingShowAggregationMenu: true
                 },
                 {
-                    name: 'numeEditura',
-                    displayName: 'Nume editura',
+                    name: 'nume',
+                    displayName: 'Nume',
                     width: 200,
                     cellTooltip: true,
                     type: 'string',
+                    enableGrouping: true,
+                    groupingShowGroupingMenu: false,
+                    groupingShowAggregationMenu: true
+                },
+                {
+                    name: 'dataNasterii',
+                    displayName: 'Data nasterii',
+                    width: 200,
+                    cellTooltip: true,
+                    type: 'date',
                     enableGrouping: true,
                     groupingShowGroupingMenu: false,
                     groupingShowAggregationMenu: true
@@ -34,7 +44,7 @@ angular.module('booksManager').controller('edituriCtrl',
 
             $scope.gridOptions = {
                 columnDefs: $scope.columnDefs,
-                data: $scope.edituri,
+                data: $scope.autori,
                 enableRowHeaderSelection: false,
                 enableRowSelection: true,
                 showTreeRowHeader: false,
@@ -54,7 +64,7 @@ angular.module('booksManager').controller('edituriCtrl',
                 enableCellEdit: false,
                 onRegisterApi: function (gridApi) {
                     $scope.gridApi = gridApi;
-                    $scope.gridApi.selection.on.rowSelectionChanged($scope, $scope.enableButtonsEditura)
+                    $scope.gridApi.selection.on.rowSelectionChanged($scope, $scope.enableButtonsAutori)
                 },
                 rowIdentity: function (row) {
                     return row.id;
@@ -65,117 +75,118 @@ angular.module('booksManager').controller('edituriCtrl',
             };
 
             $scope.pageChanged = function (newPage) {
-                $scope.getEdituri(newPage);
+                $scope.getAutori(newPage);
             };
 
-            $scope.getEdituri = function (pageNumber) {
-                EdituriService.getEdituri($scope.currentPage, $scope.pageSize)
+            $scope.getAutori = function (pageNumber) {
+                AutoriService.getAutori($scope.currentPage, $scope.pageSize)
                     .then(
                         function (data) {
 
                             $scope.currentPage = pageNumber;
-                            $scope.edituri = data.content;
+                            $scope.autori = data.content;
                             $scope.totalElements = data.totalElements;
-                            $scope.gridOptions.data = $scope.edituri;
+                            $scope.gridOptions.data = $scope.autori;
 
-                            console.log("edituri: " + $scope.edituri.length);
+                            console.log("autori: " + $scope.autori.length);
 
                             $scope.hasSelection = false;
 
                         },
                         function (errResponse) {
-                            console.error(' EdituriCtrl.getEdituri() - error');
+                            console.error(' AutoriCtrl.getAutori() - error');
                         }
                     );
             };
 
-            $scope.addEditura = function () {
+            $scope.addAutor = function () {
 
                 var modalInstanceWindow = $uibModal.open({
                     animation: true,
-                    templateUrl: '/app/components/editura/partials/editura_window.html',
+                    templateUrl: '/app/components/autor/partials/autor_window.html',
                     controller: 'modalCtrl',
                     resolve: {
                         editedObject: function () {
                             return {
-                                idEditura: 0,
-                                numeEditura: ''
+                                autorId: 0,
+                                nume: '',
+                                dataNasterii: ''
                             };
                         }
                     }
                 });
 
                 modalInstanceWindow.result.then(function (result) {
-                    $scope.saveEditura(result);
+                    $scope.saveAutor(result);
                 });
             };
 
-            $scope.modEditura = function () {
+            $scope.modAutor = function () {
                 if ($scope.gridApi.selection.getSelectedRows().length == 0) {
                     return;
                 }
-                var editura = $scope.gridApi.selection.getSelectedRows()[0];
-                $scope.oldEditura = editura;
+                var autor = $scope.gridApi.selection.getSelectedRows()[0];
+                $scope.oldAutor = autor;
                 var modalInstanceWindow = $uibModal.open({
                     animation: true,
-                    templateUrl: '/app/components/editura/partials/editura_window.html',
+                    templateUrl: '/app/components/autor/partials/autor_window.html',
                     controller: 'modalCtrl',
                     resolve: {
                         editedObject: function () {
-                            return angular.copy(editura);
+                            return angular.copy(autor);
                         }
                     }
                 });
 
                 modalInstanceWindow.result.then(function (result) {
-                    $scope.saveEditura(result);
+                    $scope.saveAutor(result);
                 });
             };
 
-            $scope.saveEditura = function (editura) {
-                EdituriService.saveEditura(editura)
+            $scope.saveAutor = function (autor) {
+                AutoriService.saveAutor(autor)
                     .then(
                         function (data) {
-                            if (editura.idEditura > 0) { //update
-                                var index = $scope.edituri.indexOf($scope.oldEditura);
+                            if (autor.autorId > 0) { //update
+                                var index = $scope.autori.indexOf($scope.oldAutor);
                                 if (index > 0) {
-                                    angular.extend($scope.edituri[index], editura);
+                                    angular.extend($scope.autori[index], autor);
                                 } else {
-                                    console.log('error detecting index of ' + $scope.oldEditura.idEditura);
-                                    $scope.getEdituri($scope.currentPage);
+                                    console.log('error detecting index of ' + $scope.oldAutor.idAutor);
+                                    $scope.getAutori($scope.currentPage);
                                 }
                             } else {
-                                $scope.edituri.push(data);
+                                $scope.autori.push(data);
                             }
                         },
                         function (errResponse) {
-                            console.error(' EdituriCtrl.saveEditura() - error');
+                            console.error('AutoriCtrl.saveAutori() - error');
                         }
                     );
             };
 
-            $scope.deleteEditura = function () {
+            $scope.deleteAutor = function () {
                 if ($scope.gridApi.selection.getSelectedRows().length == 0) {
                     return;
                 }
-                var editura = $scope.gridApi.selection.getSelectedRows()[0];
-                EdituriService.deleteEditura(editura)
+                var autor = $scope.gridApi.selection.getSelectedRows()[0];
+                AutoriService.deleteAutor(autor)
                     .then(
                         function (data) {
-                            var index = $scope.edituri.indexOf(editura);
+                            var index = $scope.autori.indexOf(autor);
                             if (index > -1) {
-                                $scope.edituri.splice(index, 1);
+                                $scope.autori.splice(index, 1);
                             }
-                            alert('Editura [' + editura.numeEditura + '] a fost stearsa cu succes!');
+                            alert('Autorul [' + autor.nume + '] a fost sters cu succes!');
                         },
                         function (errResponse) {
-                            console.error(' EdituriCtrl.deleteEditura() - error');
-                            alert('Eroare la stergerea editurii [' + editura.numeEditura + ']!');
+                            console.error('AutoriCtrl.deleteAutor() - error');
+                            alert('Eroare la stergerea autorului [' + autor.nume + ']!');
                         }
                     );
             };
 
-            $scope.enableButtonsEditura = function () {
+            $scope.enableButtonsAutori = function () {
                 $scope.hasSelection = $scope.gridApi.selection.getSelectedRows().length == 1;
             }
         }
