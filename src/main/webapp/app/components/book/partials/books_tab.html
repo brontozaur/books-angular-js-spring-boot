@@ -1,3 +1,53 @@
-<div>
-    <h1>Books</h1>
+<div class="tile" ng-controller="booksCtrl" ng-init="getBooks(1, '', 'grid')">
+    <div class="btn-toolbar padding-top-5 padding-left-5 padding-bottom-5" role="toolbar">
+
+        <button type="button" class="btn btn-default" ng-click="addBook()">
+            <span class="glyphicon glyphicon-plus color-green"></span>
+            <span class="button-text">Adaugare</span>
+        </button>
+
+        <button type="button" class="btn btn-default" ng-click="modBook()" ng-disabled="!hasSelection">
+            <span class="glyphicon glyphicon-edit color-orange"></span>
+            <span class="button-text">Modificare</span>
+        </button>
+
+        <button type="button" class="btn btn-default" ng-click="deleteBook()" ng-disabled="!hasSelection">
+            <span class="glyphicon glyphicon-trash color-red"></span>
+            <span class="button-text">Delete</span>
+        </button>
+
+        <button type="button" class="btn btn-default" ng-click="getBooks(1, '', 'grid')" ng-model="hasSelection">
+            <span class="glyphicon glyphicon-refresh color-blue"></span>
+            <span class="button-text">Refresh</span>
+        </button>
+
+    </div>
+    <div id="booksGrid" ui-grid="gridOptions" class="grid"
+         ui-grid-resize-columns
+         ui-grid-pinning
+         ui-grid-selection
+         ui-grid-move-columns
+         ui-grid-exporter
+         ui-grid-grouping
+         ui-grid-pagination
+         ui-grid-auto-resize>
+    </div>
+    <div class="pagination-grid margin-top-5">
+        <uib-pagination
+                boundary-links="true"
+                boundary-link-numbers="true"
+                direction-links="true"
+                rotate="false"
+                total-items="totalElements"
+                ng-model="currentPage"
+                items-per-page="pageSize"
+                max-size="10"
+                class="pagination-sm"
+                ng-change="pageChanged(currentPage, '', 'grid')"
+                first-text="First"
+                previous-text="Previous"
+                next-text="Next"
+                last-text="Last">
+        </uib-pagination>
+    </div>
 </div>
