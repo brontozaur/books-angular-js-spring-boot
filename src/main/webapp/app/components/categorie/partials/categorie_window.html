@@ -1,0 +1,14 @@
+<div ng-controller="categoriiCtrl">
+    <div class="modal-header">
+        <h3 class="modal-title" ng-if="editedObject.idCategorie == 0">Adaugare categorie</h3>
+        <h3 class="modal-title" ng-if="editedObject.idCategorie > 0">Editare categorie [id: {{editedObject.idCategorie}}]</h3>
+    </div>
+    <div class="modal-body">
+        <div class="same-line padding-right-5">Nume categorie:</div>
+        <input type="text" class="border-solid width-40-percent same-line padding-left-5" data-ng-model="editedObject.numeCategorie"/>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok(editedObject)">Salvare</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Renuntare</button>
+    </div>
+</div>
