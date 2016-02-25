@@ -1,7 +1,5 @@
 package com.popa.books.model;
 
-import org.hibernate.annotations.Type;
-
 import java.io.Serializable;
 
 import javax.persistence.*;
