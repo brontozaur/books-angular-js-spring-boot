@@ -1,6 +1,6 @@
 angular.module('booksManager').controller('edituriCtrl',
-    ['$scope', 'EdituriService', '$uibModal',
-        function ($scope, EdituriService, $uibModal) {
+    ['$scope', 'EdituriService', '$uibModal', 'UserNotificationService', 'WaitDialogService',
+        function ($scope, EdituriService, $uibModal, UserNotificationService, WaitDialogService) {
 
             $scope.oldEditura;
             $scope.hasSelection = false;
@@ -69,10 +69,11 @@ angular.module('booksManager').controller('edituriCtrl',
             };
 
             $scope.getEdituri = function (pageNumber) {
+                WaitDialogService.show('Incarcare edituri...');
                 EdituriService.getEdituri($scope.currentPage, $scope.pageSize)
                     .then(
                         function (data) {
-
+                            WaitDialogService.hide();
                             $scope.currentPage = pageNumber;
                             $scope.edituri = data.content;
                             $scope.totalElements = data.totalElements;
@@ -85,6 +86,7 @@ angular.module('booksManager').controller('edituriCtrl',
                         },
                         function (errResponse) {
                             console.error(' EdituriCtrl.getEdituri() - error');
+                            UserNotificationService.error('A intervenit o eroare la incarcarea editurilor!');
                         }
                     );
             };
@@ -112,6 +114,7 @@ angular.module('booksManager').controller('edituriCtrl',
 
             $scope.modEditura = function () {
                 if ($scope.gridApi.selection.getSelectedRows().length == 0) {
+                    UserNotificationService.error('Selectati o editura prima data!');
                     return;
                 }
                 var editura = $scope.gridApi.selection.getSelectedRows()[0];
@@ -133,9 +136,11 @@ angular.module('booksManager').controller('edituriCtrl',
             };
 
             $scope.saveEditura = function (editura) {
+                WaitDialogService.show('Salvare editura...');
                 EdituriService.saveEditura(editura)
                     .then(
                         function (data) {
+                            WaitDialogService.hide();
                             if (editura.idEditura > 0) { //update
                                 var index = $scope.edituri.indexOf($scope.oldEditura);
                                 if (index > 0) {
@@ -147,30 +152,37 @@ angular.module('booksManager').controller('edituriCtrl',
                             } else {
                                 $scope.edituri.push(data);
                             }
+                            UserNotificationService.info('Editura a fost salvata cu succes!');
                         },
                         function (errResponse) {
+                            WaitDialogService.hide();
                             console.error(' EdituriCtrl.saveEditura() - error');
+                            UserNotificationService.error('A intervenit o eroare la stergerea editurii!');
                         }
                     );
             };
 
             $scope.deleteEditura = function () {
                 if ($scope.gridApi.selection.getSelectedRows().length == 0) {
+                    UserNotificationService.error('Selectati o editura prima data!');
                     return;
                 }
                 var editura = $scope.gridApi.selection.getSelectedRows()[0];
+                WaitDialogService.show('Stergere editura...');
                 EdituriService.deleteEditura(editura)
                     .then(
                         function (data) {
+                            WaitDialogService.hide();
                             var index = $scope.edituri.indexOf(editura);
                             if (index > -1) {
                                 $scope.edituri.splice(index, 1);
                             }
-                            alert('Editura [' + editura.numeEditura + '] a fost stearsa cu succes!');
+                            UserNotificationService.info('Editura [' + editura.numeEditura + '] a fost stearsa cu succes!');
                         },
                         function (errResponse) {
+                            WaitDialogService.hide();
                             console.error(' EdituriCtrl.deleteEditura() - error');
-                            alert('Eroare la stergerea editurii [' + editura.numeEditura + ']!');
+                            UserNotificationService.error('Eroare la stergerea editurii [' + editura.numeEditura + ']!');
                         }
                     );
             };

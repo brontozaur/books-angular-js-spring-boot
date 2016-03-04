@@ -1,0 +1,36 @@
+#user-notification p {
+    margin: 5px 0;
+    display: table;
+    height: 25px;
+}
+
+span#user-notification-text {
+    display: table-cell;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    vertical-align: middle;
+    font-weight: 900;
+
+    opacity: 0;
+    -webkit-transition: all 2s; /* Safari */
+    transition: all 2s;
+}
+
+span#user-notification-text.active {
+    opacity: 1;
+    -webkit-transition: all 2s; /* Safari */
+    transition: all 2s;
+}
+
+span#user-notification-text.error {
+    color: #B30202;
+    background: rgba(230, 92, 92, 0.41);
+    border: 1px solid rgba(125, 3, 11, 0.37);
+}
+
+span#user-notification-text.info {
+    color: #49710C;
+    background: #C2E6C2;
+    border: 1px solid rgba(73, 113, 12, 0.37);
+}
