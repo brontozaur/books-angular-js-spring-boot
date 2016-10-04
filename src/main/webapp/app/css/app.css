@@ -98,7 +98,7 @@
 }
 
 .grid {
-    min-height: 400px;
+    position: absolute;
     width: 100%;
 }
 
@@ -108,6 +108,8 @@
     border: 1px solid lightgray;
     border-top: 0;
     text-align: center;
+    position: absolute;
+    top: 500px;
 }
 
 .margin-top-5 {

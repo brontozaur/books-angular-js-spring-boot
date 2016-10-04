@@ -2,7 +2,7 @@
   "name": "books-angular-js-spring-boot",
   "description": "Books Manager ported on AngularJS",
   "version": "0.0.0",
-  "homepage": "https://github.com/hypercube21/books-angular-js-spring-boot.git",
+  "homepage": "https://github.com/brontozaur/books-angular-js-spring-boot.git",
   "license": "NONE",
   "private": true,
   "dependencies": {
