@@ -1,4 +1,4 @@
 {
-  "directory": "src/main/webapp/app/bower_components",
+  "directory": "bower_components",
   "interactive": false
 }
