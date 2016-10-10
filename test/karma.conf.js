@@ -4,14 +4,14 @@ module.exports = function(config){
     basePath : '../',
 
     files : [
-      'app/bower_components/angular/angular.js',
-      'app/bower_components/angular-route/angular-route.js',
-      'app/bower_components/angular-ui-router/release/angular-ui-router.js',
-      'app/bower_components/jquery/dist/jquery.js',
-      'app/bower_components/bootstrap/dist/js/bootstrap.js',
-      'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-      'app/bower_components/angular-ui-grid/ui-grid.js',
-      'app/bower_components/angular-mocks/angular-mocks.js',
+      'node_modules/angular/angular.js',
+      'node_modules/angular-route/angular-route.js',
+      'node_modules/angular-ui-router/release/angular-ui-router.js',
+      'node_modules/jquery/dist/jquery.js',
+      'node_modules/bootstrap/dist/js/bootstrap.js',
+      'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+      'node_modules/angular-ui-grid/ui-grid.js',
+      'node_modules/angular-mocks/angular-mocks.js',
       'app/*.js',
       'app/components/**/*.js',
       'test/unit/**/*.js'
