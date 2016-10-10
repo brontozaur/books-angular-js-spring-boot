@@ -2,7 +2,6 @@ angular.module('booksManager').factory('httpRequestInterceptor', ['$rootScope', 
     return {
 
         'request': function (config) {
-            debugger;
             return config;
         },
         'requestError': function (response) {
@@ -14,7 +13,7 @@ angular.module('booksManager').factory('httpRequestInterceptor', ['$rootScope', 
         },
         'response': function (response) {
             if (response && response.status) {
-                console.log("Request OK");
+                // console.log("Request OK");
             }
             return response;
         },

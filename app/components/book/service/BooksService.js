@@ -3,7 +3,7 @@ angular.module('booksManager').factory('BooksService',
         function ($http, $q) {
             return {
                 getBooks: function (pageNumber, pageSize, filterValue, searchType) {
-                    return $http.get('http://localhost:8080/book', {
+                    return $http.get(server + '/book', {
                             params: {
                                 page: pageNumber,
                                 limit: pageSize,
@@ -25,7 +25,7 @@ angular.module('booksManager').factory('BooksService',
                 saveBook: function (book) {
                     var isUpdate = book.bookId > 0;
                     return $http({
-                        url: isUpdate ? ('/book/' + book.bookId) : ("/book"),
+                        url: isUpdate ? (server + '/book/' + book.bookId) : ("/book"),
                         method: isUpdate ? 'PUT' : 'POST',
                         data: JSON.stringify(book)
                     })
@@ -42,7 +42,7 @@ angular.module('booksManager').factory('BooksService',
                 deleteBook: function (book) {
                     var httpMethod = 'DELETE';
                     return $http({
-                        url: '/book/' + book.bookId,
+                        url: server + '/book/' + book.bookId,
                         method: httpMethod
                     })
                         .then(

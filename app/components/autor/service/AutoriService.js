@@ -3,7 +3,7 @@ angular.module('booksManager').factory('AutoriService',
         function ($http, $q) {
             return {
                 getAutori: function (pageNumber, pageSize) {
-                    return $http.get('/autor', {
+                    return $http.get(server + '/autor', {
                             params: {
                                 page: pageNumber,
                                 limit: pageSize
@@ -26,7 +26,7 @@ angular.module('booksManager').factory('AutoriService',
                         httpMethod = 'PUT';
                     }
                     return $http({
-                        url: '/autor',
+                        url: server + '/autor',
                         method: httpMethod,
                         data: JSON.stringify(autor)
                     })
@@ -43,7 +43,7 @@ angular.module('booksManager').factory('AutoriService',
                 deleteAutor: function (autor) {
                     var httpMethod = 'DELETE';
                     return $http({
-                        url: '/autor/' + autor.autorId,
+                        url: server + '/autor/' + autor.autorId,
                         method: httpMethod,
                         data: '',
                         headers: {

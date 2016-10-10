@@ -3,7 +3,7 @@ angular.module('booksManager').factory('EdituriService',
         function ($http, $q) {
             return {
                 getEdituri: function (pageNumber, pageSize) {
-                    return $http.get('/editura', {
+                    return $http.get(server + '/editura', {
                             params: {
                                 page: pageNumber,
                                 limit: pageSize
@@ -26,7 +26,7 @@ angular.module('booksManager').factory('EdituriService',
                         httpMethod = 'PUT';
                     }
                     return $http({
-                        url: '/editura',
+                        url: server + '/editura',
                         method: httpMethod,
                         data: JSON.stringify(editura)
                     })
@@ -43,7 +43,7 @@ angular.module('booksManager').factory('EdituriService',
                 deleteEditura: function (editura) {
                     var httpMethod = 'DELETE';
                     return $http({
-                        url: '/editura/' + editura.idEditura,
+                        url: server + '/editura/' + editura.idEditura,
                         method: httpMethod
                     })
                         .then(

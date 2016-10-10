@@ -3,7 +3,7 @@ angular.module('booksManager').factory('CategoriiService',
         function ($http, $q) {
             return {
                 getCategorii: function (pageNumber, pageSize) {
-                    return $http.get('/categorie', {
+                    return $http.get(server + '/categorie', {
                             params: {
                                 page: pageNumber,
                                 limit: pageSize
@@ -26,7 +26,7 @@ angular.module('booksManager').factory('CategoriiService',
                         httpMethod = 'PUT';
                     }
                     return $http({
-                        url: '/categorie',
+                        url: server + '/categorie',
                         method: httpMethod,
                         data: JSON.stringify(categorie)
                     })
@@ -43,7 +43,7 @@ angular.module('booksManager').factory('CategoriiService',
                 deleteCategorie: function (categorie) {
                     var httpMethod = 'DELETE';
                     return $http({
-                        url: '/categorie/' + categorie.idCategorie,
+                        url: server + '/categorie/' + categorie.idCategorie,
                         method: httpMethod
                     })
                         .then(

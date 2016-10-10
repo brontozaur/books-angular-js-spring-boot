@@ -89,3 +89,5 @@ angular.module('booksManager', [
     .config(function ($httpProvider) {
         $httpProvider.interceptors.push('httpRequestInterceptor');
     });
+
+var server = 'http://localhost:8080';
