@@ -1,6 +1,6 @@
 angular.module('booksManager').controller('autoriCtrl',
-    ['$scope', 'AutoriService', '$uibModal',
-        function ($scope, AutoriService, $uibModal) {
+    ['$scope', 'AutoriService', '$uibModal', 'UserNotificationService', 'WaitDialogService',
+        function ($scope, AutoriService, $uibModal, UserNotificationService, WaitDialogService) {
 
             $scope.oldAutor;
             $scope.hasSelection = false;
@@ -79,10 +79,11 @@ angular.module('booksManager').controller('autoriCtrl',
             };
 
             $scope.getAutori = function (pageNumber) {
+                WaitDialogService.show('Incarcare edituri...');
                 AutoriService.getAutori($scope.currentPage, $scope.pageSize)
                     .then(
                         function (data) {
-
+                            WaitDialogService.hide();
                             $scope.currentPage = pageNumber;
                             $scope.autori = data.content;
                             $scope.totalElements = data.totalElements;
@@ -94,7 +95,9 @@ angular.module('booksManager').controller('autoriCtrl',
 
                         },
                         function (errResponse) {
+                            WaitDialogService.hide();
                             console.error(' AutoriCtrl.getAutori() - error');
+                            UserNotificationService.error('A intervenit o eroare la incarcarea autorilor!');
                         }
                     );
             };

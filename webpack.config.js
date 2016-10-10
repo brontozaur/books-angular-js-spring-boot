@@ -52,5 +52,5 @@ module.exports = {
         ],
         customAttrAssign: [/\)?\]?=/]
     },
-    pulgins: plugins
+    plugins: plugins
 };

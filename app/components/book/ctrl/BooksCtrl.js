@@ -1,6 +1,6 @@
 angular.module('booksManager').controller('booksCtrl',
-    ['$scope', 'BooksService', '$uibModal',
-        function ($scope, BooksService, $uibModal) {
+    ['$scope', 'BooksService', '$uibModal', 'UserNotificationService', 'WaitDialogService',
+        function ($scope, BooksService, $uibModal, UserNotificationService, WaitDialogService) {
 
             $scope.oldBook;
             $scope.hasSelection = false;
@@ -185,10 +185,11 @@ angular.module('booksManager').controller('booksCtrl',
             };
 
             $scope.getBooks = function (pageNumber, filterValue, searchType) {
+                WaitDialogService.show('Incarcare carti...');
                 BooksService.getBooks($scope.currentPage, $scope.pageSize, filterValue, searchType)
                     .then(
                         function (data) {
-
+                            WaitDialogService.hide();
                             $scope.currentPage = pageNumber;
                             $scope.books = data.content;
                             $scope.totalElements = data.totalElements;
@@ -200,6 +201,7 @@ angular.module('booksManager').controller('booksCtrl',
 
                         },
                         function (errResponse) {
+                            WaitDialogService.hide();
                             console.error(' BooksCtrl.getBooks() - error');
                         }
                     );
@@ -228,6 +230,7 @@ angular.module('booksManager').controller('booksCtrl',
 
             $scope.modBook = function () {
                 if ($scope.gridApi.selection.getSelectedRows().length == 0) {
+                    UserNotificationService.error('Selectati o carte prima data!');
                     return;
                 }
                 var book = $scope.gridApi.selection.getSelectedRows()[0];

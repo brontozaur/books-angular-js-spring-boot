@@ -1,19 +1,19 @@
 angular.module('booksManager', [
-        'ui.router',
-        'ui.bootstrap',
-        'ui.grid',
-        'ui.grid.cellNav',
-        'ui.grid.edit',
-        'ui.grid.resizeColumns',
-        'ui.grid.pinning',
-        'ui.grid.selection',
-        'ui.grid.moveColumns',
-        'ui.grid.exporter',
-        'ui.grid.importer',
-        'ui.grid.grouping',
-        'ui.grid.pagination',
-        'ui.grid.autoResize'
-    ])
+    'ui.router',
+    'ui.bootstrap',
+    'ui.grid',
+    'ui.grid.cellNav',
+    'ui.grid.edit',
+    'ui.grid.resizeColumns',
+    'ui.grid.pinning',
+    'ui.grid.selection',
+    'ui.grid.moveColumns',
+    'ui.grid.exporter',
+    'ui.grid.importer',
+    'ui.grid.grouping',
+    'ui.grid.pagination',
+    'ui.grid.autoResize'
+])
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
         function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -84,4 +84,8 @@ angular.module('booksManager', [
 
             return $delegate;
         }]);
-    }]);
+    }])
+
+    .config(function ($httpProvider) {
+        $httpProvider.interceptors.push('httpRequestInterceptor');
+    });

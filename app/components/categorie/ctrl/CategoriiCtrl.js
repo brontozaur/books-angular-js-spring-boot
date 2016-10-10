@@ -1,6 +1,6 @@
 angular.module('booksManager').controller('categoriiCtrl',
-    ['$scope', 'CategoriiService', '$uibModal',
-        function ($scope, CategoriiService, $uibModal) {
+    ['$scope', 'CategoriiService', '$uibModal', 'UserNotificationService', 'WaitDialogService',
+        function ($scope, CategoriiService, $uibModal, UserNotificationService, WaitDialogService) {
 
             $scope.oldCategorie;
             $scope.hasSelection = false;
@@ -69,10 +69,11 @@ angular.module('booksManager').controller('categoriiCtrl',
             };
 
             $scope.getCategorii = function (pageNumber) {
+                WaitDialogService.show('Incarcare categorii...');
                 CategoriiService.getCategorii($scope.currentPage, $scope.pageSize)
                     .then(
                         function (data) {
-
+                            WaitDialogService.hide();
                             $scope.currentPage = pageNumber;
                             $scope.categorii = data.content;
                             $scope.totalElements = data.totalElements;
@@ -84,7 +85,9 @@ angular.module('booksManager').controller('categoriiCtrl',
 
                         },
                         function (errResponse) {
+                            WaitDialogService.hide();
                             console.error(' CategoriiCtrl.getCategorii() - error');
+                            UserNotificationService.error('A intervenit o eroare la incarcarea categoriilor!');
                         }
                     );
             };

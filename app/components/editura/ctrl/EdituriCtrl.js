@@ -85,6 +85,7 @@ angular.module('booksManager').controller('edituriCtrl',
 
                         },
                         function (errResponse) {
+                            WaitDialogService.hide();
                             console.error(' EdituriCtrl.getEdituri() - error');
                             UserNotificationService.error('A intervenit o eroare la incarcarea editurilor!');
                         }
