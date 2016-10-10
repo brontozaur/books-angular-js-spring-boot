@@ -3,7 +3,7 @@ angular.module('booksManager').factory('BooksService',
         function ($http, $q) {
             return {
                 getBooks: function (pageNumber, pageSize, filterValue, searchType) {
-                    return $http.get('/book', {
+                    return $http.get('http://localhost:8080/book', {
                             params: {
                                 page: pageNumber,
                                 limit: pageSize,
