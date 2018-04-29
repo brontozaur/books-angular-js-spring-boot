@@ -3,7 +3,7 @@
 The main goal of this project is to port the 'old' ExtJS [Books Manager](https://github.com/brontozaur/books-extjs-spring-boot.git) 
 app to using AngularJS and separate the back-end from the frontend.
 
-Requires books_manager_backend app to run on localhost:8080
+Requires [books_manager_backend](https://github.com/brontozaur/books_manager_backend.git) app to run on localhost:8080
 
  
 Install the dependencies
