@@ -4,13 +4,13 @@ angular.module('booksManager').factory('BooksService',
             return {
                 getBooks: function (pageNumber, pageSize, filterValue, searchType) {
                     return $http.get(server + '/book', {
-                            params: {
-                                page: pageNumber,
-                                limit: pageSize,
-                                filterValue: filterValue,
-                                searchType: searchType
-                            }
-                        })
+                        params: {
+                            page: pageNumber,
+                            limit: pageSize,
+                            filterValue: filterValue,
+                            searchType: searchType
+                        }
+                    })
                         .then(
                             function (response) {
                                 return response.data;
@@ -25,7 +25,7 @@ angular.module('booksManager').factory('BooksService',
                 saveBook: function (book) {
                     var isUpdate = book.bookId > 0;
                     return $http({
-                        url: isUpdate ? (server + '/book/' + book.bookId) : ("/book"),
+                        url: server + '/book/' + (isUpdate ? book.bookId : ""),
                         method: isUpdate ? 'PUT' : 'POST',
                         data: JSON.stringify(book)
                     })
