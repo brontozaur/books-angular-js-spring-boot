@@ -114,7 +114,7 @@ angular.module('booksManager').controller('edituriCtrl',
             };
 
             $scope.modEditura = function () {
-                if ($scope.gridApi.selection.getSelectedRows().length == 0) {
+                if ($scope.gridApi.selection.getSelectedRows().length === 0) {
                     UserNotificationService.error('Selectati o editura prima data!');
                     return;
                 }
@@ -144,7 +144,7 @@ angular.module('booksManager').controller('edituriCtrl',
                             WaitDialogService.hide();
                             if (editura.idEditura > 0) { //update
                                 var index = $scope.edituri.indexOf($scope.oldEditura);
-                                if (index > 0) {
+                                if (index >= 0) {
                                     angular.extend($scope.edituri[index], editura);
                                 } else {
                                     console.log('error detecting index of ' + $scope.oldEditura.idEditura);
@@ -164,7 +164,7 @@ angular.module('booksManager').controller('edituriCtrl',
             };
 
             $scope.deleteEditura = function () {
-                if ($scope.gridApi.selection.getSelectedRows().length == 0) {
+                if ($scope.gridApi.selection.getSelectedRows().length === 0) {
                     UserNotificationService.error('Selectati o editura prima data!');
                     return;
                 }
@@ -189,7 +189,7 @@ angular.module('booksManager').controller('edituriCtrl',
             };
 
             $scope.enableButtonsEditura = function () {
-                $scope.hasSelection = $scope.gridApi.selection.getSelectedRows().length == 1;
+                $scope.hasSelection = $scope.gridApi.selection.getSelectedRows().length === 1;
             }
         }
     ]

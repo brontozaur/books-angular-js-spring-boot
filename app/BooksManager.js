@@ -14,8 +14,8 @@ angular.module('booksManager', [
     'ui.grid.pagination',
     'ui.grid.autoResize'
 ])
-    .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
-        function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    .config(['$stateProvider', '$urlRouterProvider',
+        function ($stateProvider, $urlRouterProvider) {
 
             $stateProvider
                 .state('tabs', {

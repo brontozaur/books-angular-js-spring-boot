@@ -229,7 +229,7 @@ angular.module('booksManager').controller('booksCtrl',
             };
 
             $scope.modBook = function () {
-                if ($scope.gridApi.selection.getSelectedRows().length == 0) {
+                if ($scope.gridApi.selection.getSelectedRows().length === 0) {
                     UserNotificationService.error('Selectati o carte prima data!');
                     return;
                 }
@@ -257,7 +257,7 @@ angular.module('booksManager').controller('booksCtrl',
                         function (data) {
                             if (book.bookId > 0) { //update
                                 var index = $scope.books.indexOf($scope.oldBook);
-                                if (index > 0) {
+                                if (index >= 0) {
                                     angular.extend($scope.books[index], book);
                                 } else {
                                     console.log('error detecting index of ' + $scope.oldBook.bookId);
@@ -274,7 +274,7 @@ angular.module('booksManager').controller('booksCtrl',
             };
 
             $scope.deleteBook = function () {
-                if ($scope.gridApi.selection.getSelectedRows().length == 0) {
+                if ($scope.gridApi.selection.getSelectedRows().length === 0) {
                     return;
                 }
                 var book = $scope.gridApi.selection.getSelectedRows()[0];
@@ -295,7 +295,7 @@ angular.module('booksManager').controller('booksCtrl',
             };
 
             $scope.enableButtonsBooks = function () {
-                $scope.hasSelection = $scope.gridApi.selection.getSelectedRows().length == 1;
+                $scope.hasSelection = $scope.gridApi.selection.getSelectedRows().length === 1;
             }
         }
     ]

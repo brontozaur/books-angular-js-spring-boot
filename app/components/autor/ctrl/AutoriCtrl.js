@@ -125,7 +125,7 @@ angular.module('booksManager').controller('autoriCtrl',
             };
 
             $scope.modAutor = function () {
-                if ($scope.gridApi.selection.getSelectedRows().length == 0) {
+                if ($scope.gridApi.selection.getSelectedRows().length === 0) {
                     return;
                 }
                 var autor = $scope.gridApi.selection.getSelectedRows()[0];
@@ -152,7 +152,7 @@ angular.module('booksManager').controller('autoriCtrl',
                         function (data) {
                             if (autor.autorId > 0) { //update
                                 var index = $scope.autori.indexOf($scope.oldAutor);
-                                if (index > 0) {
+                                if (index >= 0) {
                                     angular.extend($scope.autori[index], autor);
                                 } else {
                                     console.log('error detecting index of ' + $scope.oldAutor.idAutor);
@@ -169,7 +169,7 @@ angular.module('booksManager').controller('autoriCtrl',
             };
 
             $scope.deleteAutor = function () {
-                if ($scope.gridApi.selection.getSelectedRows().length == 0) {
+                if ($scope.gridApi.selection.getSelectedRows().length === 0) {
                     return;
                 }
                 var autor = $scope.gridApi.selection.getSelectedRows()[0];
@@ -190,7 +190,7 @@ angular.module('booksManager').controller('autoriCtrl',
             };
 
             $scope.enableButtonsAutori = function () {
-                $scope.hasSelection = $scope.gridApi.selection.getSelectedRows().length == 1;
+                $scope.hasSelection = $scope.gridApi.selection.getSelectedRows().length === 1;
             }
         }
     ]

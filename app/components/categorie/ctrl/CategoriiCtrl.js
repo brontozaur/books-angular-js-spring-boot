@@ -114,7 +114,7 @@ angular.module('booksManager').controller('categoriiCtrl',
             };
 
             $scope.modCategorie = function () {
-                if ($scope.gridApi.selection.getSelectedRows().length == 0) {
+                if ($scope.gridApi.selection.getSelectedRows().length === 0) {
                     return;
                 }
                 var categorie = $scope.gridApi.selection.getSelectedRows()[0];
@@ -141,7 +141,7 @@ angular.module('booksManager').controller('categoriiCtrl',
                         function (data) {
                             if (categorie.idCategorie > 0) { //update
                                 var index = $scope.categorii.indexOf($scope.oldCategorie);
-                                if (index > 0) {
+                                if (index >= 0) {
                                     angular.extend($scope.categorii[index], categorie);
                                 } else {
                                     console.log('error detecting index of ' + $scope.oldCategorie.idCategorie);
@@ -158,7 +158,7 @@ angular.module('booksManager').controller('categoriiCtrl',
             };
 
             $scope.deleteCategorie = function () {
-                if ($scope.gridApi.selection.getSelectedRows().length == 0) {
+                if ($scope.gridApi.selection.getSelectedRows().length === 0) {
                     return;
                 }
                 var categorie = $scope.gridApi.selection.getSelectedRows()[0];
@@ -179,7 +179,7 @@ angular.module('booksManager').controller('categoriiCtrl',
             };
 
             $scope.enableButtonsCategorie = function () {
-                $scope.hasSelection = $scope.gridApi.selection.getSelectedRows().length == 1;
+                $scope.hasSelection = $scope.gridApi.selection.getSelectedRows().length === 1;
             }
         }
     ]
